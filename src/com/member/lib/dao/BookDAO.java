@@ -5,10 +5,10 @@ import java.util.Map;
 
 public interface BookDAO {
 	
-	int insertBook(Map<String,Object> board);
-	int updateBook(Map<String,Object> board);
+	int insertBook(Map<String,Object> book);
+	int updateBook(Map<String,Object> book);
 	int deleteBook(int bNum);
-	List<Map<String,Object>> selectBookList(Map<String,Object> board);
+	List<Map<String,Object>> selectBookList(Map<String,Object> book);
 	Map<String,Object> selectBook(int bNum);
 
 }
