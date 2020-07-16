@@ -43,7 +43,7 @@ public class LentDAOImpl implements LentDAO {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return result;
 	}
 
 	@Override
@@ -113,7 +113,6 @@ public class LentDAOImpl implements LentDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int result = 0;
 		try {
 			con = Connector.open();
 			String sql = "l_num, l_lentdate, m_num, b_num from lent";
@@ -134,6 +133,9 @@ public class LentDAOImpl implements LentDAO {
 			try {
 				if(ps!=null) {
 					ps.close();
+				}
+				if(con!=null) {
+					con.close();
 				}
 			}catch(SQLException e) {
 				e.printStackTrace();
