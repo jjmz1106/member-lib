@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.member.lib.dao.MemberDAO;
 import com.member.lib.dao.impl.MemberDAOImpl;
-import com.member.lib.serice.MemberService;
+import com.member.lib.service.MemberService;
 
 public class MemberServiceImpl implements MemberService {
 	

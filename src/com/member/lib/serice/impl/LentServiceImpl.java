@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.member.lib.dao.LentDAO;
 import com.member.lib.dao.impl.LentDAOImpl;
-import com.member.lib.serice.BookService;
-import com.member.lib.serice.LentService;
+import com.member.lib.service.BookService;
+import com.member.lib.service.LentService;
 
 public class LentServiceImpl implements LentService {
 

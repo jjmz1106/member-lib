@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.member.lib.dao.BookDAO;
 import com.member.lib.dao.impl.BookDAOImpl;
-import com.member.lib.serice.BookService;
+import com.member.lib.service.BookService;
 
 public class BookServiceImpl implements BookService {
 	
