@@ -43,7 +43,7 @@ public class MemberDAOImpl implements MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return result;
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class MemberDAOImpl implements MemberDAO {
 			ps.setString(3, member.get("m_pwd").toString());
 			ps.setInt(4, (int)member.get("m_num"));
 			result = ps.executeUpdate();
-			con.commit();
+			con.rollback();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -195,9 +195,12 @@ public class MemberDAOImpl implements MemberDAO {
 //		mdao.insertMember(map);
 //		List<Map<String,Object>> memberList = mdao.selectMemberList(map);
 //		System.out.println(memberList);
+
 //		System.out.println(mdao.selectMember(1));
-//		int result = mdao.deleteMember(21);
+
+//		int result = mdao.deleteMember(1);
 //		System.out.println("삭제 갯수 : " + result);
+
 		map.put("m_num", 2);
 		int result = mdao.updateMember(map);
 		System.out.println("수정 갯수 : " + result);
