@@ -1,4 +1,4 @@
-package com.member.lib.serice.impl;
+package com.member.lib.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
