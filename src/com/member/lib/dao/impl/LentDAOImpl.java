@@ -55,12 +55,15 @@ public class LentDAOImpl implements LentDAO {
 			con = Connector.open();
 			String sql = "update lent";
 			sql += " set l_recdate = sysdate,";
+			sql += " m_num=?,";
+			sql += " b_num=?";
 			sql += " where l_num=?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, (int)lent.get("l_num"));
+			ps.setInt(2, (int)lent.get("m_num"));
+			ps.setInt(3, (int)lent.get("b_num"));
 			result = ps.executeUpdate();
 			con.commit();
-			return result;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -75,7 +78,7 @@ public class LentDAOImpl implements LentDAO {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return result;
 	}
 
 	@Override

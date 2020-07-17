@@ -51,14 +51,14 @@ public class LentServiceImpl implements LentService {
 	public static void main(String[] args) {
 		LentService lentService = new LentServiceImpl();
 		Map<String,Object> map = new HashMap<>();
-//		map.put("m_num", 1);
-//		map.put("b_num", 1);
+//		map.put("m_num", 2);
+//		map.put("b_num", 2);
 //		System.out.println(lentService.insertLent(map));
 		
-//		map.put("m_num", "1");
-//		map.put("b_num", "1");
-//		map.put("l_num", 23);
-//		System.out.println(lentService.updateLent(map));
+		map.put("m_num", 2);
+		map.put("b_num", 2);
+		map.put("l_num", 41);
+		System.out.println(lentService.updateLent(map));
 		
 //		System.out.println(lentService.deleteLent(32));
 
@@ -67,7 +67,7 @@ public class LentServiceImpl implements LentService {
 //			System.out.println(mem);
 //		}
 		
-		System.out.println(lentService.selectLent(1));
+//		System.out.println(lentService.selectLent(1));
 		
 	}
 }

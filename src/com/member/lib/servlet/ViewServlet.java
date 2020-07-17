@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String PREFIX="WEB-INF";
+	private static final String PREFIX="/WEB-INF";
 	private static final String SUFIX=".jsp";
 
 
