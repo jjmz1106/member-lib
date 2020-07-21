@@ -92,7 +92,7 @@ public class LentDAOImpl implements LentDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, lNum);
 			result = ps.executeUpdate();
-			con.rollback();
+			con.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
