@@ -61,7 +61,7 @@ public class BookServlet extends HttpServlet {
 			book.put("b_tile", bTile);
 			book.put("b_author", bAuthor);
 			book.put("b_desc", bDesc);
-			doProcess(response,bookService.updateBook(book).toString());
+			doProcess(response,bookService.insertBook(book).toString());
 		}else if("/book/update".equals(uri)) {
 			String bTile = request.getParameter("b_tile");
 			String bAuthor = request.getParameter("b_author");
@@ -77,7 +77,7 @@ public class BookServlet extends HttpServlet {
 			int bNum = Integer.parseInt(request.getParameter("b_num"));
 			doProcess(response,bookService.deleteBook(bNum).toString());
 		}
-		doGet(request, response);
+		
 	}
 
 }

@@ -18,7 +18,7 @@
 				<td><input type="text" name="b_author"></td>
 			</tr>
 			<tr>
-				<th>책정보</th>
+				<th>책내용</th>
 				<td><input type="text" name="b_desc"></td>
 			</tr>
 			<tr>

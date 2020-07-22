@@ -60,7 +60,7 @@ public class MemberServlet extends HttpServlet {
 			member.put("m_name", mName);
 			member.put("m_id", mId);
 			member.put("m_pwd", mPwd);
-			doProcess(response,memberService.updateMember(member).toString()); 
+			doProcess(response,memberService.insertMember(member).toString()); 
 		}else if("/member/update".equals(uri)) {
 			String mName = request.getParameter("m_name");
 			String mId = request.getParameter("m_id");

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<from method="post"action="/book/update"id="frm">
+<form method="post"action="/book/update"id="frm">
 <input type="hidden"name="b_num"value="${book.b_num}">
 <table border="1">
 	<tr>
@@ -23,7 +23,7 @@
 		<td><input type="text"name="b_author"value="${book.b_author}"></td>
 	</tr>
 	<tr>
-		<th>책정보</th>
+		<th>책내용</th>
 		<td><input type="text"name="b_desc"value="${book.b_desc}"></td>
 	</tr>
 	<tr>
@@ -34,7 +34,7 @@
 		<th colspan="2"><button>수정</button><button type="button" onclick="doDelete()">삭제</button></th>
 	</tr>
 </table>
-</from>
+</form>
 <script>
 function doDelete(){
 	var formObj = document.querySelector('#frm');
@@ -42,6 +42,5 @@ function doDelete(){
 	formObj.submit();	
 }
 </script>
-${book}
 </body>
 </html>

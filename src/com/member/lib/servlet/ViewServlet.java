@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 public class ViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String PREFIX="/WEB-INF";
-	private static final String SUFIX=".jsp";
+	private static final String SUFFIX=".jsp";
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(PREFIX + uri + SUFIX);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(PREFIX + uri + SUFFIX);
 		requestDispatcher.forward(request, response);
 	}
 

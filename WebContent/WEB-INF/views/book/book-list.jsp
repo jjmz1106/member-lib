@@ -12,15 +12,15 @@
 	<tr>
 		<th>책제목</th>
 		<th>지은이</th>
+		<th>책내용</th>
 		<th>출간일</th>
-		<th>책정보</th>
 	</tr>
 <c:forEach items="${bookList}" var="book">
 	<tr>
 		<td><a href="/book/view?b_num=${book.b_num}">${book.b_tile}</td>
 		<td>${book.b_author}</td>
-		<td>${book.b_credat}</td>
 		<td>${book.b_desc}</td>
+		<td>${book.b_credat}</td>
 	</tr>
 </c:forEach>
 </table>

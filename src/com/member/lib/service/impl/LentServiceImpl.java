@@ -16,7 +16,7 @@ public class LentServiceImpl implements LentService {
 	public Map<String, Object> insertLent(Map<String, Object> lent) {
 		int result = lentDAO.insertLent(lent);
 		Map<String,Object> rMap = new HashMap<>();
-		rMap.put("msg", (result==1)?"대여정보 입력 성공":"실패");
+		rMap.put("msg", (result==1)?"대여정보 입력 성공":"대여정보 입력 실패");
 		rMap.put("cnt", result);
 		return rMap;
 	}
@@ -48,6 +48,11 @@ public class LentServiceImpl implements LentService {
 	public Map<String, Object> selectLent(int lNum) {
 		return lentDAO.selectLent(lNum);
 	}
+	@Override
+	public List<Map<String, Object>> selectNoLentBookList() {
+		return lentDAO.selectNoLentBookList();
+	}
+	
 	public static void main(String[] args) {
 		LentService lentService = new LentServiceImpl();
 		Map<String,Object> map = new HashMap<>();
