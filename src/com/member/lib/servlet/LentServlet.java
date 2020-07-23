@@ -16,8 +16,8 @@ import com.member.lib.service.impl.LentServiceImpl;
 
 public class LentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private LentService lentService = new LentServiceImpl();
-	
+    private LentService lentService = new LentServiceImpl();   
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		if("/lent/lent-insert".equals(uri)) {

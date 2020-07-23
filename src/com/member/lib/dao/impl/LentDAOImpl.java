@@ -25,21 +25,21 @@ public class LentDAOImpl implements LentDAO {
 			String sql = "insert into lent(l_num, l_lentdate, m_num, b_num)";
 			sql += " values(seq_lent_l_num.nextval,sysdate,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, (int)lent.get("m_num"));
-			ps.setInt(2, (int)lent.get("b_num"));
+			ps.setString(1, lent.get("m_num").toString());
+			ps.setString(2, lent.get("b_num").toString());
 			result = ps.executeUpdate();
 			con.commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps!=null) {
+				if (ps != null) {
 					ps.close();
 				}
-				if(con!=null) {
+				if (con != null) {
 					con.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -54,27 +54,27 @@ public class LentDAOImpl implements LentDAO {
 		try {
 			con = Connector.open();
 			String sql = "update lent";
-			sql += " set l_recdate = sysdate,";
+			sql += " set l_recdate=sysdate,";
 			sql += " m_num=?,";
 			sql += " b_num=?";
 			sql += " where l_num=?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, (int)lent.get("l_num"));
-			ps.setInt(2, (int)lent.get("m_num"));
-			ps.setInt(3, (int)lent.get("b_num"));
+			ps.setInt(1, (int)lent.get("m_num"));
+			ps.setInt(2, (int)lent.get("b_num"));
+			ps.setInt(3, (int)lent.get("l_num"));
 			result = ps.executeUpdate();
 			con.commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps!=null) {
+				if (ps != null) {
 					ps.close();
 				}
-				if(con!=null) {
+				if (con != null) {
 					con.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -93,17 +93,17 @@ public class LentDAOImpl implements LentDAO {
 			ps.setInt(1, lNum);
 			result = ps.executeUpdate();
 			con.commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps!=null) {
+				if (ps != null) {
 					ps.close();
 				}
-				if(con!=null) {
+				if (con != null) {
 					con.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -118,33 +118,33 @@ public class LentDAOImpl implements LentDAO {
 		ResultSet rs = null;
 		try {
 			con = Connector.open();
-			String sql = "select l.*,m.m_name,b.b_tile from lent l,member m, book b\r\n" + 
-					"where l.m_num=m.m_num\r\n" + 
-					"and b.b_num= l.b_num";
+			String sql = "SELECT L.*,M.M_NAME,B.b_tile FROM LENT L, MEMBER M, BOOK B\r\n" + 
+					"WHERE L.M_NUM = M.M_NUM\r\n" + 
+					"AND L.B_NUM = B.B_NUM";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				Map<String,Object> map = new HashMap<>();
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<>();
 				map.put("l_num", rs.getInt("l_num"));
 				map.put("l_lentdate", rs.getString("l_lentdate"));
 				map.put("l_recdate", rs.getString("l_recdate"));
-				map.put("m_num", rs.getInt("m_num"));
-				map.put("b_num", rs.getInt("b_num"));
+				map.put("m_num", rs.getString("m_num"));
+				map.put("b_num", rs.getString("b_num"));
 				map.put("m_name", rs.getString("m_name"));
 				map.put("b_tile", rs.getString("b_tile"));
 				lentList.add(map);
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps!=null) {
+				if (ps != null) {
 					ps.close();
 				}
-				if(con!=null) {
+				if (con != null) {
 					con.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -156,15 +156,14 @@ public class LentDAOImpl implements LentDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int result = 0;
 		try {
 			con = Connector.open();
-			String sql = "select l_num, l_lentdate, m_num, b_num from lent where b_num=?";
+			String sql = "select l_num, l_lentdate, l_recdate, m_num, b_num from lent where b_num=?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, lNum);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				Map<String,Object> map = new HashMap<>();
+			if (rs.next()) {
+				Map<String, Object> map = new HashMap<>();
 				map.put("l_num", rs.getInt("l_num"));
 				map.put("l_lentdate", rs.getString("l_lentdate"));
 				map.put("l_recdate", rs.getString("l_recdate"));
@@ -172,22 +171,21 @@ public class LentDAOImpl implements LentDAO {
 				map.put("b_num", rs.getString("b_num"));
 				return map;
 			}
-		}catch(Exception e) {
-				e.printStackTrace();
-		}finally {
-				try {
-					if(ps!=null) {
-						ps.close();
-					}
-					if(con!=null) {
-						con.close();
-					}
-				}catch(SQLException e) {
-					e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-			return null;
-			
+		}
+		return null;
 	}
 
 	@Override
@@ -199,30 +197,31 @@ public class LentDAOImpl implements LentDAO {
 		try {
 			con = Connector.open();
 			String sql = "select b_num,b_tile from book\r\n" + 
-					"where b_num not in(select b_num from lent\r\n" + 
-					"where l_recdate is null)";
+					" where b_num not in(select b_num from lent\r\n" + 
+					" where l_recdate is null)";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				Map<String,Object> map = new HashMap<>();
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<>();
 				map.put("b_num", rs.getInt("b_num"));
 				map.put("b_tile", rs.getString("b_tile"));
 				lentList.add(map);
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps!=null) {
+				if (ps != null) {
 					ps.close();
 				}
-				if(con!=null) {
+				if (con != null) {
 					con.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return lentList;
 	}
+
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/common.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 			<td>
 				<select name="b_num">
 					<c:forEach items="${bookList}" var="book">
-					<option value="${book.b_num}">${book.b_tile}</option>
+						<option value="${book.b_num}">${book.b_tile}</option>
 					</c:forEach>
 				</select>
 			</td>

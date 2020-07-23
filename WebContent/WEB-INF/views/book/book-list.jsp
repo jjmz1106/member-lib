@@ -10,6 +10,7 @@
 <body>
 <table border="1">
 	<tr>
+		<th>책번호</th>
 		<th>책제목</th>
 		<th>지은이</th>
 		<th>책내용</th>
@@ -17,6 +18,7 @@
 	</tr>
 <c:forEach items="${bookList}" var="book">
 	<tr>
+		<td>${book.b_num}</td>
 		<td><a href="/book/view?b_num=${book.b_num}">${book.b_tile}</td>
 		<td>${book.b_author}</td>
 		<td>${book.b_desc}</td>
